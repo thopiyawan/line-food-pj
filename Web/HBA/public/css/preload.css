@@ -1,0 +1,35 @@
+/* preload */
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 7px solid #f3f3f3;
+    border-top: 7px solid rgb(4, 215, 235);
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}

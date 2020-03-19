@@ -1,0 +1,81 @@
+{
+  "hosting": {
+    "headers": [
+      
+      {
+        "source": "**/*.@(js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, no-store, no-cache, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|eot|otf|ttf|ttc|woff|woff2|font.css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, no-store, no-cache, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/register",
+        "destination": "/register.html"
+      },
+      {
+        "source": "/forgotpassword",
+        "destination": "/forgotpassword.html"
+      },
+      {
+        "source": "/patient",
+        "destination": "/doctor/patient.html"
+      },
+      {
+        "source": "/profile",
+        "destination": "/doctor/profile.html"
+      },
+      {
+        "source": "/history",
+        "destination": "/doctor/history.html"
+      },
+      {
+        "source": "/record",
+        "destination": "/doctor/record.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/admin/admin.html"
+      },
+      {
+        "source": "/admin/profile_doctor",
+        "destination": "/admin/profile_doctor.html"
+      },
+      {
+        "source": "/admin/profile_patient",
+        "destination": "/admin/profile_patient.html"
+      },
+      {
+        "source": "/admin/history_patient",
+        "destination": "/admin/history_patient.html"
+      },
+      {
+        "source": "/admin/record_patient",
+        "destination": "/admin/record_patient.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

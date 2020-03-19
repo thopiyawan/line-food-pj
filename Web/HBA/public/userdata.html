@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Mali&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ECECEC;
+            font-family: 'Mali', cursive;
+        }
+
+        .btn {
+            border-radius: 0px;
+        }
+    </style>
+
+    <title>User Data</title>
+</head>
+
+<body>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <a class="navbar-brand" href="#">HBA </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item ">
+                    <a class="nav-link" href="dashboard.html" target="_self"><b>DASHBOARD</b></a>
+                </li> -->
+                <li class="nav-item">
+                <li class="nav-item active">
+                    <a class="nav-link" href="userdata.html" target="_self"><b>USER</b><span
+                            class="sr-only">(current)</span></a>
+                </li>
+                </li>
+            </ul>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-sign-out-alt"></i>
+                <b>LOGOUT</b></button>
+        </div>
+    </nav>
+
+    <!-- content -->
+
+    <div class="container">
+        <br>
+        <h1>ข้อมูลผู้ใช้</h1>
+    </div>
+
+
+    <div class="container">
+        <table class="table table-bordered table-responsive-md bg-light shadow" id="tb-userdata">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">ชื่อ</th>
+                    <th scope="col">นามสกุล</th>
+                    <th scope="col">เพศ</th>
+                    <th scope="col">อายุ</th>
+                    <th scope="col">ส่วนสูง</th>
+                    <th scope="col">น้ำหนัก</th>
+                    <th scope="col">ค่าดัชนีมวลกาย(BMI)</th>
+                    <th scope="col">ดำเนินการ</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+
+    <div class="modal fade bd-Modal bd-example-modal-lg" id="Modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-lg ">
+                <div class="modal-header ">
+                    <h4 class="modal-title" id="exampleModalLabel">เช้า</h4>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form id="Modal-form">
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="rice">ข้าว-แป้ง</label>
+                                    <input type="number" class="form-control" id="rice" name="rice" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="fruits">ผลไม้</label>
+                                    <input type="number" class="form-control" id="fruits" name="fruits" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="vegetables">ผัก ก.ข.</label>
+                                    <input type="number" class="form-control" id="vegetable" name="vegetable" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="milk">นม</label>
+                                    <input type="number" class="form-control" id="milk" name="milk" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="meat">เนื้อสัตว์</label>
+                                    <input type="number" class="form-control" id="meat" name="meat" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="fat">ไขมัน</label>
+                                    <input type="number" class="form-control" id="fat" name="fat" min="0">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="sugar">น้ำตาล</label>
+                                    <input type="number" class="form-control" id="sugar" name="sugar" min="0">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="sodium">โซเดียม</label>
+                                    <input type="number" class="form-control" id="sodium" name="sodium" min="0">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="btnbreakfast" data-id="doc.id">แก้ไข</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+        integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+<script src="script/userdata.js" charset="utf-8"></script>
+
+
+
+
+</html>

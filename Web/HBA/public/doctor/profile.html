@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- preload/bodycss -->
+    <link rel="stylesheet" href="doctor/profile.css">
+    <link rel="stylesheet" href="css/preload.css">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F5d3d3;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        div.ex1 {
+            width: 100%;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid lightgrey;
+            border-radius: 7px;
+        }
+
+        #chartdivwight {
+            width: 100%;
+            height: 450px;
+        }
+
+        #chartDayKcal {
+            width: 100%;
+            height: 450px;
+        }
+    </style>
+
+
+    <title>คนไข้</title>
+</head>
+
+<body>
+    <!-- preload -->
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
+
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+            <i class="fas fa-user-injured navbar-brand"></i>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="breadcrumb-item" id="linkToPatient"><a href="#">หน้าแรก</a></li>
+                    <li class="breadcrumb-item font-weight-bold " aria-current="page">คนไข้</li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-danger my-2 my-sm-0 font-weight-bold" id="btnLogout"><i
+                            class="fas fa-sign-out-alt"></i>
+                        LOGOUT</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <!-- content -->
+    <div class="container">
+
+        <!-- วันที่ -->
+        <div class="row pt-3">
+            <div class="col">
+                <h5 class="font-weight-bold">คนไข้</h5>
+            </div>
+            <div class="col text-right">
+                <h5 class="font-weight-bold" id="txtDateNow">วันที่
+                    <h5>
+            </div>
+        </div>
+        <!-- //วันที่ -->
+
+        <div class="row pt-1">
+            <!-- โปรไฟล์ -->
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 align-middle">
+                                <div id="profilePictureDiv"></div>
+                            </div>
+                            <div class="col ml-3 mt-1">
+                                <h6 class="card-title font-weight-bold" id="txtName">ชื่อ</h6>
+                                <p class="card-text"><text class="font-weight-bold"> เพศ : </text>
+                                    <text id="txtGender"></text></p>
+                                <p class="card-text"><text class="font-weight-bold"> อายุ : </text><text
+                                        id="txtAge"></text><small> ปี</small></p>
+                                <p class="card-text"><text class="font-weight-bold"> น้ำหนัก : </text><text
+                                        id="txtWeight"></text><small> กก.</small></p>
+                                <p class="card-text"><text class="font-weight-bold"> ส่วนสูง : </text>
+                                    <text id="txtHeight"></text><small> ซม.</small>
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <p class="card-text mr-1 pt-5"><text class="font-weight-bold">พลังงานที่ควรได้รับ
+                                        :
+                                    </text><text id="txtBmr"> </text><small class="mr-1"> (Kcal)</small></p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                        data-target="#modalweight"><i class="fas fa-chart-line"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-sm " data-toggle="modal"
+                                        data-target="#modalComment"><i class="fas fa-comment-dots"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //โปรไฟล์ -->
+
+            <!-- ดัชนีมวลกาย -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="card-title font-weight-bold">ดัชนีมวลกาย</h6>
+                            </div>
+                            <div class="col-auto">
+                                <text id="txtBmi" class="font-weight-bold"></text><small class="ml-1">(kg/m2)</small>
+                            </div>
+                            <div id="chartdiv"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //ดัชนีมวลกาย -->
+        </div>
+
+        <!-- ส่งคำแนะนำ Modal -->
+        <div class="modal fade" id="modalComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">คำแนะนำ</h5>
+                        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                            <i class="fas fa-window-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="comment" class="font-weight-bold">ใส่คำแนะนำ...</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+
+                        <div class="ex1 rounded-sm ">
+                            <table class="table table-borderless table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>วันที่</th>
+                                        <th>เวลา</th>
+                                        <th>คำแนะนำ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableComment">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-sm" id="btnSendMessage">ส่ง</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //ส่งคำแนะนำ Modal -->
+
+
+        <!-- ปุ่มเมนู -->
+        <div class="pt-2">
+            <ul class="nav nav-pills">
+                <button class="nav-link font-weight-bold active" data-toggle="pill" href="#result"
+                    id="btnAvgResult">ภาพรวม</button>
+
+                <button type="button" class="btn btn-dark  font-weight-bold " data-toggle="modal"
+                    data-target=".bd-example-modal-lg"><i class="fas fa-camera mr-1"></i>แกลลอรี่อาหาร
+                </button>
+                <button type="button" class="btn btn-dark font-weight-bold " data-toggle="modal" data-target=".food"
+                    href="#" id=""><i class="fas fa-utensils mr-1"></i>รายการอาหาร</button>
+
+                <button class="nav-link btn btn-light dropdown-toggle" data-toggle="dropdown" href="#"><i
+                        class="fas fa-receipt mr-1"></i>ประวัติรายวัน</button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <div class="form-inline mx-1 my-1">
+                        <div class="form-group mr-1">
+                            <label class="mr-1">วันที่ :</label>
+                            <input class="form-control form-control-sm" type="date" id="dateStart"></input>
+                        </div>
+                        <label class="mx-3">ถึง</label>
+                        <div class="form-group mr-1">
+                            <label class="mr-1">วันที่ :</label>
+                            <input class="form-control form-control-sm" type="date" id="dateEnd"></input>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm mx-2" id="btnSlectDate">ตกลง</button>
+                    </div>
+                </ul>
+            </ul>
+            <!-- //ปุ่มเมนู -->
+
+
+            <!-- Card -->
+            <div id="result" class="tab-pane active">
+                <!-- Card result stats -->
+                <div class="row pt-2">
+                    <!-- ------------------ -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                            <a class="card-body" data-toggle="modal" data-target="#ChartKcalResult">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h5 class="card-title text-muted mb-0">พลังงาน<small class="ml-1">(Kcal)</small>
+                                        </h5>
+                                        <span class="h4 font-weight-bold mb-0 text-center"
+                                            id="txtKcalResultAvg">0</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- ------------------ -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                            <a class="card-body" data-toggle="modal" data-target="#ChartCarboResult">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">
+                                            คาร์โบไฮเดรต<small class="ml-1">(%)</small>
+                                        </h5>
+                                        <span class="h4 font-weight-bold mb-0 text-center"
+                                            id="txtKcalCarboResultAvg">0</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- --------------------- -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                            <a class="card-body" data-toggle="modal" data-target="#ChartProteinResult">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">โปรตีน<small
+                                                class="ml-1">(%)</small></h5>
+                                        <span class="h4 font-weight-bold mb-0 text-center"
+                                            id="txtKcalProteinResultAvg">0</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- --------------------- -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                            <a class="card-body" data-toggle="modal" data-target="#ChartFatResult">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">ไขมัน<small
+                                                class="ml-1">(%)</small></h5>
+                                        <span class="h4 font-weight-bold mt-1 mb-0 text-center"
+                                            id="txtKcalFatResultAvg">0</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- --------------------- -->
+                </div>
+            </div>
+            <!-- //Card -->
+        </div>
+    </div>
+
+
+
+    <!-- สถิติน้ำหนัก Modal -->
+    <div class="modal fade bd-example-modal-xl" id="modalweight" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">น้ำหนัก</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chartdivwight"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //สถิติน้ำหนัก Modal -->
+
+    <!-- สรุปพลังงาน Modal -->
+    <div class="modal fade bd-example-modal-xl" id="ChartKcalResult" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">พลังงานที่ได้รับโดยสรุป/วัน</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chartDayKcal"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //สรุปพลังงาน Modal -->
+
+
+    <!-- สถิติคาร์โบไฮเดรต Modal -->
+    <div class="modal fade" id="ChartCarboResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">พลังงานคาร์โบไฮเดรตโดยสรุป/วัน</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chartResultCarbo"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //สถิติคาร์โบไฮเดรต Modal -->
+
+    <!-- สถิติโปรตีน Modal -->
+    <div class="modal fade" id="ChartProteinResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">พลังงานโปรตีนโดยสรุป/วัน</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chartResultProtein"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //สถิติโปรตีน Modal -->
+
+    <!-- สถิติพลังงานไขมัน Modal -->
+    <div class="modal fade" id="ChartFatResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">พลังงานไขมันโดยสรุป/วัน</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chartResultFat"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //สถิติพลังงานไขมัน Modal -->
+
+    <!-- แกลลอรี่ modal -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-camera mr-1"></i>แกลลอรี่อาหาร</h5>
+                    <button type="button" class="close close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="grid-container" id="imgFood">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //แกลลอรี่ modal -->
+
+    <!-- เมนูอาหาร modal -->
+    <div class="modal fade food" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-utensils mr-1"></i>รายการอาหาร</h5>
+                    <button type="button" class="close close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">วันที่</th>
+                                <th scope="col">รายการอาหาร</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableHistoryMeal">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //เมนูอาหาร modal -->
+
+    <div class="container">
+        <hr>
+    </div>
+
+    <!-- แถบเมนู -->
+    <div class="container">
+        <h5 class="mt-3 mb-3 font-weight-bold">ประวัติการบันทึกอาหาร</h5>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <button class="nav-link btn font-weight-bold active" data-toggle="tab" href="#kcal">พลังงาน</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link btn font-weight-bold" data-toggle="tab" href="#Nutrients">สารอาหาร</button>
+            </li>
+        </ul>
+        <!-- //แถบเมนู -->
+
+        <!-- Tab Kcal -->
+        <div class="tab-content">
+            <div id="kcal" class="tab-pane active"><br>
+                <table class="table table-bordered bg-light table-responsive-md shadow text-center" id="tb-kcal">
+                    <thead>
+                        <tr class="table-sky">
+                            <th scope="col">วัน/เดือน/ปี</th>
+                            <th scope="col">คาร์โบไฮเดรต<br><small>(kcal)</small></th>
+                            <th scope="col">โปรตีน<br><small>(kcal)</small></th>
+                            <th scope="col">ไขมัน<br><small>(kcal)</small></th>
+                            <th scope="col">รวม<br><small>(kcal)</small></th>
+                            <th scope="col">สรุป<br><small>(kcal)</small></th>
+                            <th scope="col">ดำเนินการ</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!-- Tab2 -->
+            <div id="Nutrients" class="tab-pane fade"><br>
+                <table class="table table-bordered bg-light table-responsive-md shadow text-center" id="tb-date">
+                    <thead>
+                        <tr class="table-sky">
+                            <th scope="col">วัน/เดือน/ปี</th>
+                            <th scope="col">ข้าว-แป้ง<br><small>(ทัพพี)</small></th>
+                            <th scope="col">ผลไม้<br><small>(ส่วน)</small></th>
+                            <th scope="col">ผัก<br><small>(ทัพพี)</small></th>
+                            <th scope="col">นม<br><small>(แก้ว)</small></th>
+                            <th scope="col">เนื้อสัตว์<br><small>(ส่วน)</small></th>
+                            <th scope="col">ไขมัน<br><small>(ช้อนชา)</small></th>
+                            <th scope="col">น้ำตาล<br><small>(ช้อนชา)</small></th>
+                            <th scope="col">โซเดียม<br><small>(ช้อนชา)</small></th>
+                            <th scope="col">พลังงาน <br><small>(kcal)</small></th>
+                            <th scope="col">ดำเนินการ</th>
+                        </tr>
+                    </thead>
+                    <!-- //Tab2 -->
+
+                    <!-- ตาราง -->
+                    <tr class="table-warning text-center">
+                        <th>
+                            <h6> สัดส่วนอาหารตั้งต้น </h6>
+                            <small class="fas fa-sync-alt mr-1"></small><small id="txtDateRatio"></small>
+                        </th>
+                        <td>
+                            <h6 id="txtRatioRice"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioFruits"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioVegetable"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioMilk"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioMeat"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioFat"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioSugar"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioSodium"></h6>
+                        </td>
+                        <td>
+                            <h6 id="txtRatioKcal"></h6>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-secondary" data-target=".bd-ratio"
+                                data-toggle="modal">แก้ไขสัดส่วน
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- //ตาราง -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- แก้ไขสัดส่วน modal -->
+    <div class="modal fade bd-ratio bd-example-modal-md" id="ratioModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content modal-md">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">สัดส่วนอาหารตั้งต้น</h4>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" for="rice01">ข้าว-แป้ง</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioRice" name="rice" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fruits01" class="col-4 col-form-label">ผลไม้</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioFruits" name="fruits" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="vegetable01" class="col-4 col-form-label">ผัก</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioVegetable" name="vegetable"
+                                    min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="milk01" class="col-4 col-form-label">นม</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioMilk" name="milk" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="meat01" class="col-4 col-form-label">เนื้อสัตว์</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioMeat" name="meat" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fat01" class="col-4 col-form-label">ไขมัน</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioFat" name="fat" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sugar01" class="col-4 col-form-label">น้ำตาล</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioSugar" name="sugar" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sodium01" class="col-4 col-form-label">โซเดียม</label>
+                            <div class="col-8">
+                                <input type="number" class="form-control" id="inputRatioSodium" name="sodium" min="0">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-sm" id="btnUpdateRatio">แก้ไข</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //แก้ไขสัดส่วน modal -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+<!-- Firebase SDK -->
+<script src="/__/firebase/7.7.0/firebase-app.js"></script>
+<script src="/__/firebase/7.7.0/firebase-analytics.js"></script>
+<script src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+<script src="/__/firebase/7.7.0/firebase-storage.js"></script>
+<script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+<!-- Moment SDK -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+    integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+<!-- amChart -->
+<script src="//www.amcharts.com/lib/4/core.js"></script>
+<script src="//www.amcharts.com/lib/4/charts.js"></script>
+<script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script src="js/doctor/profile.js"></script>
+
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+<!-- preload -->
+<script>
+    var overlay = document.getElementById("overlay");
+
+    window.addEventListener('load', function () {
+        overlay.style.display = 'none';
+    })
+</script>
+
+
+</html>

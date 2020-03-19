@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 4px;
+}
+
+/* Clearfix (clear floats) */
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*  /img side by side  */
+
+a {
+    color: rgb(39, 40, 41) !important;
+}
+
+a:hover {
+    color: #25B8E0 !important;
+}
+
+.nav-tabs .btn {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    transition: 0.3s;
+    border-radius: 0px;
+    box-shadow: none !important;
+}
+
+/* Change background color of buttons on hover */
+.nav-tabs button:hover {
+    background-color: rgb(160, 160, 160);
+}
+
+/* Create an active/current tablink class */
+.nav-tabs button.active {
+    background-color: #ccc;
+}
+
+.tab-content {
+    background-color: rgb(255, 255, 255);
+    border: none;
+}
+
+.nav-tabs button[id="btnSlectDate"] {
+    background-color: rgb(32, 99, 199);
+}

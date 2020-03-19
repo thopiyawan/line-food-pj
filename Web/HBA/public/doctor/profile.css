@@ -1,0 +1,132 @@
+/* body */
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 95%;
+}
+
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+a {
+    color: rgb(39, 40, 41) !important;
+}
+
+a:hover {
+    color: #25B8E0 !important;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item {
+    background-color: rgba(158, 124, 124, 0.8);
+    text-align: center;
+}
+
+
+/* Style the buttons */
+.btn {
+    cursor: pointer;
+}
+
+.card {
+    height: 100%;
+}
+
+.table-sky {
+    background-color: #9bacd4;
+}
+
+.nav-tabs .btn {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    transition: 0.3s;
+    border-radius: 0px;
+    box-shadow: none !important;
+}
+
+
+/* Change background color of buttons on hover */
+.nav-tabs button:hover {
+    background-color: rgb(160, 160, 160);
+}
+
+/* Create an active/current tablink class */
+.nav-tabs button.active {
+    background-color: #ccc;
+}
+
+
+/* .nav-tabs {
+    border-radius: 0px;
+    background-color: #8a8a8a;
+  } */
+
+.tab-content {
+    background-color: rgb(255, 255, 255);
+    border: none;
+}
+
+.nav-pills .nav-link {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    transition: 0.3s;
+    border-radius: 0px;
+    box-shadow: none !important;
+}
+
+.nav-pills button:hover {
+    background-color: grey;
+}
+
+.nav-pills button {
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    box-shadow: none !important;
+}
+
+.tab-content[id="btnPill"] {
+    background-color: #007bff;
+    border: none;
+}
+
+.fa-pen-square:hover {
+    color: #007bff;
+}
+
+.fa-clipboard-list:hover {
+    color: #007bff;
+}
+
+.fa-caret-square-left:hover {
+    color: #007bff;
+}
+
+.tab-content[id="card"] {
+    background-color: inherit;
+    border: none;
+}
+
+/* .nav-pills .dropdown-toggle:active {
+    background-color: #007bff;
+} */

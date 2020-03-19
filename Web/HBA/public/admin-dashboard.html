@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+  <!-- icon -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    tr,
+    a,
+    f,
+    div {
+      font-family: 'Kanit', sans-serif;
+    }
+
+    body {
+      background-color: #ECECEC;
+    }
+
+    .btn {
+      border-radius: 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-dark text-white border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><i class="fas fa-utensils"></i> Food Consumption</div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Calandar</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Status</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow">
+        <button class="btn btn-light" id="menu-toggle">
+          <i class="fas fa-align-justify">
+          </i>
+        </button>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="userdata.html" target="_self"><b>USER</b></a>
+            </li>
+            <div>
+              <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-sign-out-alt"></i>
+                <b>LOGOUT</b></button>
+            </div>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Content -->
+      <div class="container-fluid">
+        <h1 class="mt-4 ">Dashboard</h1>
+
+
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0 card shadow">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">all User</h5>
+                    <span class="h2 font-weight-bold mb-0" id="allUser"><i class="fas fa-spinner fa-spin"></i></span>
+                  </div>
+                  <d iv class="col-auto">
+                    <div class="icon icon-shape">
+                      <i class="fas fa-users"></i></i>
+                    </div>
+                  </d iv>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- --------------------- -->
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0 card shadow">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                    <span class="h2 font-weight-bold mb-0" id="newUser">0</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape">
+                      <i class="fas fa-user-tag"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- --------------------- -->
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0 card shadow">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">wait</h5>
+                    <span class="h2 font-weight-bold mb-0"><i class="fas fa-spinner fa-spin"></i></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape">
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- --------------------- -->
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0 card shadow">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">wait</h5>
+                    <span class="h2 font-weight-bold mb-0"><i class="fas fa-spinner fa-spin"></i></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape">
+                      <i class="fas fa-percent"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------ -->
+
+
+        <br>
+
+        <!-- table -->
+        <div class="card shadow ">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">User</h3>
+              </div>
+              <div class="col text-right">
+                <a href="userdata.html" class="btn btn-sm btn-primary" target="_self">See all</a>
+              </div>
+            </div>
+          </div>
+          <!-- Projects table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush table-bordered bg-light " id="tb-user">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">ชื่อ</th>
+                  <th scope="col">นามสกุล</th>
+                  <th scope="col">เพศ</th>
+                  <th scope="col">อายุ</th>
+                  <th scope="col">ส่วนสูง</th>
+                  <th scope="col">น้ำหนัก</th>
+                  <th scope="col">ค่าดัชนีมวลกาย(BMI)</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ------------------ -->
+
+
+
+        <!-- --------  ==  -------- -->
+      </div>
+      <!-- ------------------ -->
+    </div>
+    <!-- ------------------ -->
+  </div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+  integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+<script src="script/scr-dashboard.js" charset="utf-8"></script>
+
+</html>

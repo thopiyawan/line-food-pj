@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- preload -->
+    <link rel="stylesheet" href="css/preload.css">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #74849B;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        .nav-tabs .nav-link {
+            border-radius: 0px;
+            border: none;
+            outline: none;
+            box-shadow: none !important;
+        }
+
+        .tab-content {
+            background-color: rgb(255, 255, 255);
+            border: none;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow">
+            <span class="fas fa-user-cog navbar-brand"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="breadcrumb-item font-weight-bold " aria-current="page">แอดมิน</li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <div>
+                        <button class="btn btn-outline-danger my-2 my-sm-0 font-weight-bold" id="btnLogout"><i
+                                class="fas fa-sign-out-alt"></i>
+                            LOGOUT</button>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col">
+                <h4 class="font-weight-bold text-white"><text class="mr-2" id="adminName">ไม่มีข้อมูล</text></h4>
+            </div>
+            <div class="col-auto text-right ">
+                <h4 class="font-weight-bold text-white">วันที่ <text id="txtDateNowTH"></text>
+                    <h4>
+            </div>
+        </div>
+
+        <!-- ส่วนที่ 1 -->
+        <!-- จำนวนผู้ใช้งานทั้งหมด -->
+        <div class="row">
+            <div class="col-xl-3 col-lg-6">
+                <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-1">ผู้ใช้ทั้งหมด</h5>
+                                <span class="h5 font-weight-bold mb-0 mt-1" id="allUser">ไม่มีข้อมูล</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape">
+                                    <i class="fas fa-users"></i></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-1 mb-0 text-muted text-sm">
+                            <small class="text-nowrap"><i class="fas fa-sync-alt mr-1"></i><text
+                                    id="txtDate1"></text></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------- -->
+            <!-- จำนวนหมอ -->
+            <div class="col-xl-3 col-lg-6">
+                <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-1">หมอ</h5>
+                                <span class="h5 font-weight-bold mb-0 mt-1" id="allDoctor">ไม่มีข้อมูล</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape">
+                                    <i class="fas fa-user-tag"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-1 mb-0 text-muted text-sm">
+                            <small class="text-nowrap"><i class="fas fa-sync-alt mr-1"></i><text
+                                    id="txtDate2"></text></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------- -->
+            <!-- จำนวนนักโภชนาการ -->
+            <div class="col-xl-3 col-lg-6">
+                <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-1">นักโภชนาการ</h5>
+                                <span class="h5 font-weight-bold mb-0 mt-1" id="allDietician">ไม่มีข้อมูล</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-1 mb-0 text-muted text-sm">
+                            <small class="text-nowrap"><i class="fas fa-sync-alt mr-1"></i><text
+                                    id="txtDate3"></text></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------- -->
+            <!-- อื่นๆ ยังไม่มีข้อมูลที่นำมาใส่ -->
+            <div class="col-xl-3 col-lg-6">
+                <div class="card card-stats mb-4 mb-xl-0 card shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-1">อื่นๆ</h5>
+                                <span class="h5 font-weight-bold mb-0 mt-1" id="allOther">ไม่มีข้อมูล</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape">
+                                    <i class="fas fa-user-injured"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-1 mb-0 text-muted text-sm">
+                            <small class="text-nowrap"><i class="fas fa-sync-alt mr-1"></i><text
+                                    id="txtDate4"></text></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------ -->
+    </div>
+    <!-- จบส่วนที่ 1 -->
+
+    <!-- ส่วนที่สอง -->
+    <!-- Nav tabs เมนูส่วนหัวของตาราง -->
+    <div class="container mt-3 mb-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="btn nav-link active" data-toggle="tab" href="#menu1">ผู้ใช้งานทั้งหมด</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn nav-link" data-toggle="tab" href="#menu2">หมอ</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn nav-link" data-toggle="tab" href="#menu3">นักโภชนาการ</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn nav-link" data-toggle="tab" href="#menu4">แอดมิน</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <!-- ตารางผู้ใช้ทั้งหมด -->
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane active"><br>
+                <div class="table-responsive ">
+                    <table class="table text-center table-bordered bg-light " id="tb-user">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col">อีเมลล์</th>
+                                <th scope="col">วันที่สมัคร</th>
+                                <th scope="col">ตำแหน่ง</th>
+                                <th scope="col">การใช้งานล่าสุด</th>
+                                <th scope="col">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- //ตารางผู้ใช้ทั้งหมด -->
+
+            <!-- ตารางหมอ -->
+            <div id="menu2" class="tab-pane fade"><br>
+                <div class="table-responsive ">
+                    <table class="table text-center table-bordered bg-light " id="tb-doctor">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col">อีเมลล์</th>
+                                <th scope="col">วันที่สมัคร</th>
+                                <th scope="col">การใช้งานล่าสุด</th>
+                                <th scope="col">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- //ตารางหมอ -->
+
+            <!-- ตารางนักโภชนาการ -->
+            <div id="menu3" class="tab-pane fade"><br>
+                <div class="table-responsive ">
+                    <table class="table text-center table-bordered bg-light " id="tb-dietician">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col">อีเมลล์</th>
+                                <th scope="col">วันที่สมัคร</th>
+                                <th scope="col">การใช้งานล่าสุด</th>
+                                <th scope="col">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+            <!-- //ตารางนักโภชนาการ -->
+
+            <!-- แอดมิน -->
+            <div id="menu4" class="tab-pane fade"><br>
+                <div class="table-responsive ">
+                    <table class="table text-center table-bordered bg-light " id="tb-admin">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col">อีเมลล์</th>
+                                <th scope="col">วันที่สมัคร</th>
+                                <th scope="col">การใช้งานล่าสุด</th>
+                                <th scope="col">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+            <!-- //แอดมิน -->
+        </div>
+        <!-- //Tab panes -->
+    </div>
+    <!-- จบส่วนที่สอง -->
+
+    <!-- modal from script -->
+    <div id="modalinsert"></div>
+
+    <!-- modal เปลี่ยนสถานะผู้ใช้งาน-->
+    <div class="modal fade bd-example-modal-sm" id="changesRole" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนสถานะผู้ใช้งาน</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                        value="option1" checked>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        แอดมิน
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                        value="option2">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        หมอ
+                                    </label>
+                                </div>
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                        value="option3">
+                                    <label class="form-check-label" for="gridRadios3">
+                                        นักโภชนาการ
+                                    </label>
+                                </div>
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                        value="option4">
+                                    <label class="form-check-label" for="gridRadios4">
+                                        อื่นๆ
+                                    </label>
+                                    <input type="text" class="form-control form-control-sm" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //modal เปลี่ยนสถานะผู้ใช้งาน-->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- Firebase SDK -->
+    <script src="/__/firebase/7.7.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-storage.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+    <!-- Moment SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+        integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+    <!-- Sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script src="../js/admin/admin.js" charset="utf-8"></script>
+
+
+    <!-- preload -->
+    <script>
+        var overlay = document.getElementById("overlay");
+
+        window.addEventListener('load', function () {
+            overlay.style.display = 'none';
+        })
+    </script>
+
+</body>
+
+</html>

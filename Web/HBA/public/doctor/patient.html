@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- preload/bodycss -->
+    <link rel="stylesheet" href="css/preload.css">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            clear: both;
+            background-color: #accd8a;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            position: static;
+        }
+
+        img[id="preview"] {
+            width: 60%;
+            height: auto;
+        }
+
+        .card-img {
+            width: auto;
+            height: 215px;
+            max-width: 250px;
+            /* border: 5px dashed #f7a239; */
+        }
+
+        .txtShadow {
+            text-shadow: 1px 0px #242222;
+        }
+
+        .card {
+            height: 100%;
+            width: auto;
+            max-height: 100%;
+        }
+
+        .table-yell {
+            background-color: #f9e3b3;
+        }
+
+        .file {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        a {
+            color: rgb(39, 40, 41) !important;
+        }
+
+        a:hover {
+            color: #25B8E0 !important;
+        }
+    </style>
+
+    <title>โปรไฟล์</title>
+</head>
+
+<body>
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+            <i class="navbar-brand fas fa-user-md"></i>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">             
+                    <li class="breadcrumb-item font-weight-bold">
+                        หน้าแรก<span class="sr-only">(current)</span>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-danger my-2 my-sm-0 font-weight-bold" id="btnLogout"><i
+                        class="fas fa-sign-out-alt"></i>
+                    LOGOUT</button>
+            </div>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <!-- content -->
+    <div class="container">
+
+        <!-- วันที่ -->
+        <div class="row pt-3">
+            <div class="col">
+                <h5 class="font-weight-bold">โปรไฟล์</h5>
+            </div>
+            <div class="col text-right">
+                <h5 class="font-weight-bold " id="txtDateNow">วันที่
+                    <h5>
+            </div>
+        </div>
+        <!-- //วันที่ -->
+
+        <!-- โปรไฟล์ -->
+        <div class="row">
+            <div class="col-md-9 p-2">
+                <div class="card">
+                    <div class="card-body shadow ">
+                        <div class="row ">
+                            <div class="col-md-4 text-center">
+                                <div id="profilePictureDiv" class="my-2"></div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title font-weight-bold">ชื่อ :<text class="ml-2" id="nameDoctor">
+                                    </text></h5>
+                                <h6 class="card-text font-weight-bold ">หน่วยงาน :<text class="ml-2"
+                                        id="txtOfficename"></text>
+                                </h6>
+                                <h6 class="card-text font-weight-bold ">สถานะ :<text class="ml-2" id="txtRole"></text>
+                                </h6>
+                                <h6 class="card-text" id="txtQrcode">โค้ด</h6>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape" data-toggle="tooltip" data-placement="left"
+                                    title="แก้ไขชื่อ">
+                                    <button type="button" class="btn btn-secondary btn-sm fas fa-edit btn"
+                                        data-toggle="modal" data-target="#exampleModal">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 p-2">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //โปรไฟล์ -->
+
+        <!-- จำนวนคนไข้ -->
+        <div class="row">
+            <div class="col">
+                <p>
+                    <h5 class="font-weight-bold ">จำนวนผู้ใช้<text class="p-2" id="sumPatient">0</text>คน</h5>
+                </p>
+            </div>
+        </div>
+        <!-- //จำนวนคนไข้ -->
+
+        <!-- ตารางผู้ใช้ -->
+        <table class="table table-bordered table-responsive-md bg-light text-center shadow" id="tb-userdata">
+            <thead>
+                <tr class="table-yell">
+                    <th scope="col">ชื่อ</th>
+                    <th scope="col">นามสกุล</th>
+                    <th scope="col">เพศ</th>
+                    <th scope="col">อายุ<small class="ml-1">(ปี)</small></th>
+                    <th scope="col">ส่วนสูง<small class="ml-1">(ซม.)</small></th>
+                    <th scope="col">น้ำหนัก<small class="ml-1">(กก.)</small></th>
+                    <th scope="col">ค่าดัชนีมวลกาย(BMI)<small class="ml-1">(kg/m2)</small></th>
+                    <th scope="col">ใช้งานล่าสุด</th>
+                    <th scope="col">รายละเอียดเพิ่มเติม</th>
+                </tr>
+            </thead>
+        </table>
+        <!-- //ตารางผู้ใช้ -->
+    </div>
+
+    <!-- แก้ไขชื่อโปรไฟล์ Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขชื่อ</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- img review -->
+                    <div class="col-auto text-center ">
+                        <div class="col-md-12 ">
+                            <img src="" id="preview" class="img-thumbnail ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">ชื่อ</label>
+                        <input type="text" class="form-control" id="inputName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">นามสกุล</label>
+                        <input type="text" class="form-control" id="inputLastName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="officeName">ชื่อหน่วยงาน
+                        </label>
+                        <input type="text" class="form-control" id="inputOfficeName">
+                    </div>
+
+                    <div class="col d-flex justify-content-center">
+                        <div id="msg"></div>
+
+                        <form method="post" id="image-form" class="d-flex justify-content-center">
+                            <div class="text-center">
+                                <input type="file" id="imgProfile" name="imgProfile" class="file" accept="image/*">
+                            </div>
+                            <div class="input-group my-3">
+                                <label class="mr-2">เปลี่ยนรูปภาพ</label>
+                                <input type="text" class="form-control-sm" id="file">
+                                <div class="input-group-append">
+                                    <button type="button" class="browse btn btn-primary btn-sm">เลือกรูปภาพ</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnDeleteProfile" class="btn btn-danger btn-sm">ลบบัญชีผู้ใช้</button>
+                    <button id="btnUpdateProfile" class="btn btn-primary btn-sm">แก้ไข</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //แก้ไขชื่อโปรไฟล์ Modal -->
+
+    <!-- Firebase SDK -->
+    <script src="/__/firebase/7.7.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-storage.js"></script>
+    <script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+        integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+    <!-- Sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</body>
+
+
+<script src="js/doctor/qrcode.js"></script>
+<script src="js/doctor/patient.js"></script>
+
+<script>
+    $(document).on("click", ".browse", function () {
+        var file = $(this).parents().find(".file");
+        file.trigger("click");
+    });
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $("#file").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+</script>
+
+<!-- preload -->
+<script>
+    var overlay = document.getElementById("overlay");
+
+    window.addEventListener('load', function () {
+        overlay.style.display = 'none';
+    })
+</script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+</html>

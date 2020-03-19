@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- preload/bodycss -->
+    <link rel="stylesheet" href="../css/preload.css">
+    <link rel="stylesheet" href="../doctor/history.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6c2b44fe70.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        body {
+            background-color: #ECECEC;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        /*  img side by side  */
+    </style>
+
+
+    <title>ประวัติการบันทึกอาหาร</title>
+</head>
+
+<body>
+    <!-- preload -->
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+            <i class="navbar-brand fas fa-clipboard-list"></i>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="breadcrumb-item" id="linkToAdmin"><a href="#">แอดมิน</a></li>
+                    <li class="breadcrumb-item" id="linkToDoctor"><a href="#">ผู้ดูแล</a></li>
+                    <li class="breadcrumb-item" id="linkToPatient"><a href="#">คนไข้</a></li>
+                    <li class="breadcrumb-item font-weight-bold " aria-current="page">ประวัติการบันทึกอาหาร</li>
+                </ul>
+                <button class="btn btn-outline-danger my-2 my-sm-0 font-weight-bold" id="btnLogout"><i
+                        class="fas fa-sign-out-alt"></i>
+                    LOGOUT</button>
+            </div>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <!-- วันที่บนสุด -->
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col">
+                <h5 class="font-weight-bold"><text class="mr-2">ประวัติการบันทึกอาหาร</text></h5>
+            </div>
+            <div class="col-auto text-right ">
+                <h5 class="font-weight-bold" id="txtDateNowTH">วันที่<h5>
+            </div>
+        </div>
+        <!-- //วันที่บนสุด -->
+
+        <!-- ตาราง -->
+        <table class="table table-bordered table-responsive-md bg-light shadow" id="tbresult">
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>มื้ออาหาร</th>
+                    <th>เมนูอาหาร</th>
+                    <th colspan="9" class="h5 font-weight-bold">
+                        ปริมาณหน่วยที่กินต่อมื้อ
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-center" id="tableHistory">
+                <tr class="table-primary">
+                    <td></td>
+                    <td></td>
+                    <td>ข้าว-แป้ง <br> <small>(ทัพพี)</small> </td>
+                    <td>ผลไม้ <br> <small>(ส่วน)</small> </td>
+                    <td>ผัก ก.ข. <br> <small>(ทัพพี)</small> </td>
+                    <td>นม <br> <small>(แก้ว)</small> </td>
+                    <td>เนื้อสัตว์ <br> <small>(ส่วน)</small> </td>
+                    <td>ไขมัน <br> <small>(ช้อนชา)</small> </td>
+                    <td>น้ำตาล <br> <small>(ช้อนชา)</small> </td>
+                    <td>โซเดียม <br> <small>(ช้อนชา)</small> </td>
+                    <td>แก้ไขสัดส่วนอาหาร</td>
+                </tr>
+
+                <!-- ตารางสัดส่วนตั้งต้น -->
+                <tr class="table-danger text-center">
+                    <th colspan="2">
+                        <h6> สัดส่วนอาหารตั้งต้น </h6>
+                        <small class="fas fa-sync-alt mr-1"></small><small id="txtRatioDate"></small>
+                    </th>
+                    <td>
+                        <h6 id="txtRatioRice"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioFruits"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioVegetable"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioMilk"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioMeat"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioFat"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioSugar"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+                        <h6 id="txtRatioSodium"></h6> <small class="text-muted"></small>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <!-- //ตารางสัดส่วนตั้งต้น -->
+
+                <!-- ตารางคงเหลือ -->
+                <tr class="table-success text-center">
+                    <td colspan="2">
+                        <h6> สัดส่วนอาหารคงเหลือ </h6>
+                        </th>
+                    <td>
+                        <p id="txtBalanceRice"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceFruits"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceVegetable"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceMilk"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceMeat"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceFat"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceSugar"></p>
+                    </td>
+                    <td>
+                        <p id="txtBalanceSodium"></p>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <!-- //ตารางคงเหลือ -->
+                <tr id="row">
+                </tr>
+            </tbody>
+        </table>
+        <!-- //ตาราง -->
+
+
+
+
+        <div class="container" id="modal_insert"></div>
+        <div class="container" id="modal_imagefood_insert"></div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+            integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+
+
+
+</body>
+<!-- Firebase SDK -->
+<script src="/__/firebase/7.7.0/firebase-app.js"></script>
+<script src="/__/firebase/7.7.0/firebase-analytics.js"></script>
+<script src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+<script src="/__/firebase/7.7.0/firebase-storage.js"></script>
+<script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+<!-- Moment SDK -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"
+    integrity="sha256-p2W93O+vSx9WeMoysQcwoOkbExKS/gISb+muTjcgQDA=" crossorigin="anonymous"></script>
+
+<script src="../js/doctor/tableHistory.js"></script>
+<script src="../js/doctor/modalHistory.js"></script>
+<script src="../js/doctor/updateDetail.js"></script>
+<script src="../js/admin/history_patient.js"></script>
+
+
+<!-- preload -->
+<script>
+    var overlay = document.getElementById("overlay");
+
+    window.addEventListener('load', function () {
+        overlay.style.display = 'none';
+    })
+</script>
+
+</html>
