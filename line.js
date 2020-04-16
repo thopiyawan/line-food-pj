@@ -179,7 +179,7 @@ module.exports = (req, res) => {
             method: 'post',
             url: `https://api.line.me/v2/bot/user/${userId}/richmenu/${richMenuId1}`,
             headers: {
-                Authorization: 'Bearer {RNBVQMom+5jCwGzd0hSlihhch+OsW9wiGlZLTW1UbRk2DgnFHJHo29qfRn1oiIzv/4/bnO6H8Xer+h93/n53c8PoxRB3hiSSMEE9NtyoZHjgzeZnLbZmJ3VNfU7+Wxk/3eoWXL6HmasPU7gOa0mn4gdB04t89/1O/w1cDnyilFU=}'
+                Authorization: 'Bearer {LI/SBj+Wa/zQwgOKRi4ThmhL8La5+V68JXS7c9INXh/utQp3i+3IsTdg8Jltg9QYZLQvYRnXn5H1R+DFX7KZzG80fc7WsMLUqdDmx0NpOlIpIaYAPh+4C+F078yis2JpY1cwxyQz3AicSv1Lkjv7PQdB04t89/1O/w1cDnyilFU=}'
             }
         });
         agent.add(`เริ่มต้นการใช้งานได้เลยครับ`);
@@ -189,7 +189,7 @@ module.exports = (req, res) => {
             method: 'post',
             url: `https://api.line.me/v2/bot/user/${userId}/richmenu/${richMenuId1}`,
             headers: {
-                Authorization: 'Bearer {RNBVQMom+5jCwGzd0hSlihhch+OsW9wiGlZLTW1UbRk2DgnFHJHo29qfRn1oiIzv/4/bnO6H8Xer+h93/n53c8PoxRB3hiSSMEE9NtyoZHjgzeZnLbZmJ3VNfU7+Wxk/3eoWXL6HmasPU7gOa0mn4gdB04t89/1O/w1cDnyilFU=}'
+                Authorization: 'Bearer {LI/SBj+Wa/zQwgOKRi4ThmhL8La5+V68JXS7c9INXh/utQp3i+3IsTdg8Jltg9QYZLQvYRnXn5H1R+DFX7KZzG80fc7WsMLUqdDmx0NpOlIpIaYAPh+4C+F078yis2JpY1cwxyQz3AicSv1Lkjv7PQdB04t89/1O/w1cDnyilFU=}'
             }
         });
         agent.add(`เมนูหลักพร้อมใช้งาน`);
@@ -199,7 +199,7 @@ module.exports = (req, res) => {
             method: 'post',
             url: `https://api.line.me/v2/bot/user/${userId}/richmenu/${richMenuId2}`,
             headers: {
-                Authorization: 'Bearer {RNBVQMom+5jCwGzd0hSlihhch+OsW9wiGlZLTW1UbRk2DgnFHJHo29qfRn1oiIzv/4/bnO6H8Xer+h93/n53c8PoxRB3hiSSMEE9NtyoZHjgzeZnLbZmJ3VNfU7+Wxk/3eoWXL6HmasPU7gOa0mn4gdB04t89/1O/w1cDnyilFU=}'
+                Authorization: 'Bearer {LI/SBj+Wa/zQwgOKRi4ThmhL8La5+V68JXS7c9INXh/utQp3i+3IsTdg8Jltg9QYZLQvYRnXn5H1R+DFX7KZzG80fc7WsMLUqdDmx0NpOlIpIaYAPh+4C+F078yis2JpY1cwxyQz3AicSv1Lkjv7PQdB04t89/1O/w1cDnyilFU= }'
             }
         });
         agent.add(`เมนูเพิ่มเติมพร้อมใช้งาน`);
